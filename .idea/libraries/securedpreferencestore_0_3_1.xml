@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="securedpreferencestore-0.3.1">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.android/build-cache/028b3b3753cd17b32ee37a85ca77287bf9b56ade/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/028b3b3753cd17b32ee37a85ca77287bf9b56ade/output/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/online.devliving/securedpreferencestore/0.3.1/5f1fb3e63263f3ee649e8977fe02671de6707fb7/securedpreferencestore-0.3.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

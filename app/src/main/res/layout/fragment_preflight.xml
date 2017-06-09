@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:focusable="true"
+              android:focusableInTouchMode="true"
+              android:clickable="true"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/toolbarpreflight"
+        layout="@layout/toolbar_preflight"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:id="@+id/check_text"
+        android:text="@string/checklist_cap"
+        android:textStyle="bold"
+        android:textSize="40sp"
+        android:textColor="#000000"
+        android:layout_gravity="center_horizontal"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Pilot Name: "/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:id="@+id/pilot_name"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="      ID: "/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:id="@+id/pilot_id"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="      RPIC_Cert: "/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:id="@+id/pilot_cert"/>
+
+    </LinearLayout>
+    <!--
+            <ListView
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:transcriptMode="alwaysScroll"
+                android:scrollbarStyle="outsideInset"
+                android:id="@+id/checklistview">
+
+            </ListView>
+    -->
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:transcriptMode="alwaysScroll"
+        android:scrollbarStyle="outsideInset"
+        android:id="@+id/checklistview">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <View
+            android:layout_width="5dp"
+            android:layout_height="0dp"
+            android:id="@+id/dummy_view"
+            android:layout_centerHorizontal="true"/>
+        <Button
+            android:theme="@style/SecondaryButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_sign"
+            android:visibility="visible"
+            android:layout_toStartOf="@id/dummy_view"
+            android:includeFontPadding="false"
+            android:text="@string/sign_permisson"
+            android:textSize="25sp"/>
+
+        <Button
+            android:theme="@style/SecondaryButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_display"
+            android:visibility="visible"
+            android:layout_toEndOf="@id/dummy_view"
+            android:includeFontPadding="false"
+            android:text="@string/search_permisson"
+            android:textSize="25sp"/>
+
+    </RelativeLayout>
+
+    <Button
+        android:theme="@style/SecondaryButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_submit"
+        android:includeFontPadding="false"
+        android:layout_weight="0"
+        android:text="@string/submit_checklist"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="bottom|center_horizontal"/>
+
+</LinearLayout>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/primary_dark">
+
+    <TextView
+        android:id="@+id/toolbar_mytitle"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="15pt"
+        android:text="@string/toolbar_title_flight_plan"
+        android:textColor="@color/icons"/>
+
+    <ImageButton
+        android:id="@+id/button_mylocation"
+        android:src="@drawable/ic_location_searching_white_48dp"
+        android:layout_height="40dp"
+        android:layout_gravity = "right"
+        android:background="@null"
+        android:layout_width="40dp"
+        android:layout_marginEnd="5dp"
+        android:scaleType="centerCrop"/>
+
+    <ImageButton
+        android:id="@+id/button_layers"
+        android:src="@drawable/ic_layers_white_48dp"
+        android:layout_height="40dp"
+        android:layout_gravity = "right"
+        android:background="@null"
+        android:layout_width="40dp"
+        android:layout_marginEnd="15dp"
+        android:scaleType="centerCrop"/>
+</android.support.v7.widget.Toolbar>

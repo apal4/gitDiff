@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="wrap_content"
+              android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/text_layer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Layers"
+        android:textSize="14pt"
+        android:textColor="@color/white"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textAlignment="center"
+        android:background="@color/primary_dark"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="8dp"
+        android:text="Select All"
+        android:buttonTint="@color/icons"
+        android:textColor="@color/icons"
+        android:textSize="10pt"
+        android:textAlignment="center"
+        android:id="@+id/check_selectall"/>
+
+
+    <ImageButton
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_layer_done"
+        android:src="@drawable/ic_done_white_48dp"
+        android:layout_alignParentEnd="true"
+        android:background="@null"
+        android:layout_marginEnd="15dp"/>
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_layer"
+        android:padding="5dp">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                      android:orientation="vertical"
+                      android:id="@+id/checkBoxlist"
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Airport Airspace"
+                android:paddingTop="5dp"
+                android:paddingStart="6dp"
+                android:textSize="13pt"
+                android:textColor="@color/primary_dark"/>
+
+            <CheckBox
+                android:id="@+id/check_commercial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12pt"
+                android:text="Commercial Rules"/>
+
+            <CheckBox
+                android:id="@+id/check_pa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12pt"
+                android:text="Private Airports"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Controlled Airspace"
+                android:paddingTop="5dp"
+                android:paddingStart="6dp"
+                android:textSize="13pt"
+                android:textColor="@color/primary_dark"/>
+
+            <CheckBox
+                android:id="@+id/check_class_b"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12pt"
+                android:text="Class B"/>
+
+            <CheckBox
+                android:id="@+id/check_class_c"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12pt"
+                android:text="Class C"/>
+
+            <CheckBox
+                android:id="@+id/check_class_d"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12pt"
+                android:text="Class D"/>
+
+            <CheckBox
+                android:id="@+id/check_class_e0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12pt"
+                android:text="Class E"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cautionary"
+                android:paddingTop="5dp"
+                android:paddingStart="6dp"
+                android:textSize="13pt"
+                android:textColor="@color/primary_dark"/>
+
+            <CheckBox
+                android:id="@+id/check_psua"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12pt"
+                android:text="Prohibited Special Use Airspace"/>
+
+            <CheckBox
+                android:id="@+id/check_rsua"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12pt"
+                android:text="Restricted Special Use Airspace"/>
+
+            <CheckBox
+                android:id="@+id/check_np"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12pt"
+                android:text="National Parks"/>
+
+            <CheckBox
+                android:id="@+id/check_noaa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12pt"
+                android:text="NOAA Marine Protection Areas"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Advisory"
+                android:paddingTop="5dp"
+                android:paddingStart="6dp"
+                android:textSize="13pt"
+                android:textColor="@color/primary_dark"/>
+
+            <CheckBox
+                android:id="@+id/check_hos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12pt"
+                android:text="Hospitals"/>
+
+            <CheckBox
+                android:id="@+id/check_sch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12pt"
+                android:text="Schools"/>
+
+            <CheckBox
+                android:id="@+id/check_heli"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12pt"
+                android:text="Heliports"/>
+
+            <CheckBox
+                android:id="@+id/check_pp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12pt"
+                android:text="Power Plants"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Temporal"
+                android:paddingTop="5dp"
+                android:paddingStart="6dp"
+                android:textSize="13pt"
+                android:textColor="@color/primary_dark"/>
+
+            <CheckBox
+                android:id="@+id/check_tfrs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12pt"
+                android:text="Temporary Flight Restrictions"/>
+
+            <CheckBox
+                android:id="@+id/check_wild"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12pt"
+                android:layout_marginBottom="5dp"
+                android:text="Wildfires (realtime)"/>
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

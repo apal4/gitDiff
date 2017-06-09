@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.capozio.flightbag.feature.main.MainActivity">
+
+    <!-- To bug lovers: name the id as "toolbar"  -->
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/container">
+
+
+    </FrameLayout>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:id="@+id/menu_container"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="2dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
+        android:layout_gravity="center_horizontal|bottom">
+
+        <RadioButton
+            android:id="@+id/learnButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:includeFontPadding="false"
+            android:button="@null"
+            android:text="Learn"
+            android:textAlignment="center"
+            android:textColor="@drawable/radiobtn_textcolor_selector"
+            android:background="@drawable/menu_radiobtn_selector"
+            android:textSize="12pt"
+            android:textStyle="bold"
+            android:onClick="learnClick"/>
+
+        <RadioButton
+            android:id="@+id/planbutton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:textAlignment="center"
+            android:includeFontPadding="false"
+            android:textColor="@drawable/radiobtn_textcolor_selector"
+            android:background="@drawable/menu_radiobtn_selector"
+            android:text="Plan"
+            android:textSize="12pt"
+            android:textStyle="bold"
+            android:onClick="planClick"/>
+
+
+        <RadioButton
+
+            android:id="@+id/preflightButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:textAlignment="center"
+            android:includeFontPadding="false"
+            android:textColor="@drawable/radiobtn_textcolor_selector"
+            android:background="@drawable/menu_radiobtn_selector"
+            android:text="Preflight"
+            android:textSize="12pt"
+            android:textStyle="bold"
+            android:onClick="preflightClick"/>
+
+
+        <Button
+            android:id="@+id/flyButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:includeFontPadding="false"
+            android:textAllCaps="false"
+            android:textColor="@drawable/radiobtn_textcolor_selector"
+            android:background="@drawable/menu_radiobtn_selector"
+            android:text="Fly"
+            android:textSize="12pt"
+            android:textStyle="bold"
+            android:onClick="flyClick"/>
+
+        <RadioButton
+
+            android:id="@+id/logButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:textAlignment="center"
+            android:includeFontPadding="false"
+            android:textColor="@drawable/radiobtn_textcolor_selector"
+            android:background="@drawable/menu_radiobtn_selector"
+            android:text="Log"
+            android:textSize="12pt"
+            android:textStyle="bold"
+            android:onClick="logClick"/>
+
+        <RadioButton
+
+            android:id="@+id/manageButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:textAlignment="center"
+            android:includeFontPadding="false"
+            android:textColor="@drawable/radiobtn_textcolor_selector"
+            android:background="@drawable/menu_radiobtn_selector"
+            android:text="Manage"
+            android:textSize="12pt"
+            android:textStyle="bold"
+            android:onClick="manageClick"/>
+    </RadioGroup>
+
+
+</LinearLayout>

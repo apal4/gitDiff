@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/sign_linearlayout"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:focusableInTouchMode="true"
+        android:focusable="true"
+        android:layout_marginStart="20dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/textview_permissonSlip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textSize="13pt"
+            android:paddingEnd="10dp"/>
+    </ScrollView>
+
+    <TableLayout
+        android:id="@+id/tablelayout_sign"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp">
+
+        <TableRow
+            android:id="@+id/layout_sign"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/edit_name"
+                android:inputType="textPersonName|textCapWords"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:imeOptions="actionNext"
+                android:background="@android:color/transparent"
+                android:textColor="@android:color/black"
+                android:textSize="12pt"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/sign_date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@android:color/black"
+                android:textSize="11pt"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="4"
+                android:background="@android:color/darker_gray"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="1"
+                android:background="@android:color/darker_gray"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:text="@string/sign_fullname"
+                android:textSize="11pt"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/sign_date"
+                android:textSize="11pt"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp">
+
+            <com.mapbox.services.android.geocoder.ui.GeocoderAutoCompleteView
+                android:id="@+id/edit_street_address"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:textSize="11pt"
+                android:maxLines="2"
+                android:inputType="textPostalAddress"/>
+<!--
+            <EditText
+                android:id="@+id/edit_street_address"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:imeOptions="actionNext"
+                android:inputType="textPostalAddress|textCapWords"
+                android:background="@android:color/transparent"
+                android:textColor="@android:color/black"
+                android:textSize="12pt"/>
+
+            <EditText
+                android:id="@+id/edit_city"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.4"
+                android:imeOptions="actionNext"
+                android:inputType="textPostalAddress|textCapWords"
+                android:maxLines="3"
+                android:background="@android:color/transparent"
+                android:textColor="@android:color/black"
+                android:textSize="12pt"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"/>
+
+            <EditText
+                android:id="@+id/edit_state"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.1"
+                android:imeOptions="actionDone"
+                android:maxLines="1"
+                android:inputType="textPostalAddress|textCapWords"
+                android:background="@android:color/transparent"
+                android:textColor="@android:color/black"
+                android:textSize="12pt"/>
+            -->
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+<!--
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="4"
+                android:background="@android:color/darker_gray"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="1.4"
+                android:background="@android:color/darker_gray"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="1.1"
+                android:background="@android:color/darker_gray"/>
+                -->
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/sign_street_address"
+                android:layout_weight="4"
+                android:textSize="11pt"/>
+<!--
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/sign_city"
+                android:layout_weight="1.4"
+                android:textSize="11pt"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/sign_state"
+                android:layout_weight="1.1"
+                android:textSize="11pt"/>
+                -->
+        </TableRow>
+
+        <com.capozio.flightbag.feature.permissonSlip.SignatureView
+            android:id="@+id/view_signature"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_gravity="center"
+            android:background="@android:color/darker_gray"/>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_weight="5"
+                android:text="@string/sign_signature"
+                android:textSize="11pt"/>
+
+            <Button
+                android:id="@+id/button_clear"
+                android:layout_width="20dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:includeFontPadding="false"
+                android:textAlignment="center"
+                android:text="@string/clear"/>
+        </TableRow>
+    </TableLayout>
+
+    <TableLayout
+        android:id="@+id/tablelayout_notOnPDF"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="0dp">
+
+        <TableRow
+            android:id="@+id/tablerow_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sign_email"
+                android:textSize="9pt"/>
+
+            <EditText
+                android:id="@+id/edit_email"
+                android:maxLines="1"
+                android:inputType="textEmailAddress"
+                android:imeOptions="actionDone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:textColor="@android:color/black"
+                android:textSize="11pt"/>
+        </TableRow>
+        <TableRow
+            android:id="@+id/tablerow_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+        <ImageButton
+            android:id="@+id/button_cancel_sign"
+            android:src="@drawable/ic_clear_white_24dp"
+            android:background="@color/accent"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:scaleType="centerInside"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:elevation="2dp"/>
+
+            <Button
+                android:theme="@style/SecondaryButton"
+                android:id="@+id/button_submit_permissonslip"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:includeFontPadding="false"
+                android:layout_gravity="center"
+                android:layout_weight="10"
+                android:text="@string/submit"
+                android:textSize="12pt"/>
+<!--
+            <ImageButton
+                android:id="@+id/button_display"
+                android:src="@drawable/ic_assignment"
+                android:background="@color/accent"
+                android:layout_width="0dp"
+                android:layout_height="39dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="center_vertical"
+                android:elevation="2dp"/>
+                -->
+        </TableRow>
+    </TableLayout>
+
+
+</LinearLayout>
