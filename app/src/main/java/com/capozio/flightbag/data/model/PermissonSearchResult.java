@@ -2,6 +2,7 @@ package com.capozio.flightbag.data.model;
 
 import android.location.Location;
 import android.os.Environment;
+import android.view.ViewGroup;
 
 import com.capozio.flightbag.util.Configs;
 import com.google.gson.Gson;
@@ -72,12 +73,7 @@ public class PermissonSearchResult {
     };
 
     private float getDistance(float lat, float lon) {
-        // Todo: Use the haversine formula. This isn't exactly correct. [implemented below but not fully tested]
-
-        float mLat = (float)myLocation.getLatitude();
-        float mLon = (float)myLocation.getLongitude();
-        return getHaversineDistance(mLat, mLon, lat, lon);
-//        return (lat-mLat)*(lat-mLat) + (lon-mLon)*(lon-mLon);
+   return 0;
     }
 
      private float getHaversineDistance(float lat1, float lon1, float lat2, float lon2) {

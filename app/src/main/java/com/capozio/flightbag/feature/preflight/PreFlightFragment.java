@@ -39,6 +39,7 @@ import com.capozio.flightbag.data.model.PermissonSlipMetaDataResponse;
 import com.capozio.flightbag.data.model.PilotDataResponse;
 import com.capozio.flightbag.feature.permissonSlip.SearchNearbyActivity;
 import com.capozio.flightbag.feature.permissonSlip.SignatureActivity;
+import com.capozio.flightbag.rest.DataConnector;
 import com.capozio.flightbag.rest.RestClient;
 import com.capozio.flightbag.rest.RestInterface;
 import com.capozio.flightbag.rest.RestService;
@@ -46,6 +47,9 @@ import com.capozio.flightbag.util.Configs;
 import com.capozio.flightbag.util.SendEmailUtil;
 import com.capozio.flightbag.util.StorageUtil;
 import com.capozio.flightbag.util.ToastUtil;
+import com.cloudant.sync.documentstore.AttachmentException;
+import com.cloudant.sync.documentstore.ConflictException;
+import com.cloudant.sync.documentstore.DocumentStoreException;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -57,10 +61,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.lang.reflect.Type;
+import java.net.URISyntaxException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.TimeZone;
 import java.util.concurrent.Callable;
 
@@ -354,6 +361,7 @@ public class PreFlightFragment extends android.support.v4.app.Fragment {
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
+
                         // find which item is selected, render the fragment with the selected checklist
                         // and record its index
                         for (int i = 0; i < checklists.size(); i++)
@@ -471,11 +479,34 @@ public class PreFlightFragment extends android.support.v4.app.Fragment {
                                 Date curDate = new Date();
                                 String localDate = dateFormat.format(curDate);
                                 dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+                                //make a new map to upload with dataConnector
+                                Map<String,Object> map=new HashMap<String,Object>();
+                                map.put("localTimestamp",localDate);
+                                map.put("TemplateName",templateName);
+                                map.put("UTCTimestamp",dateFormat.format(curDate) + "Z");
+                                map.put("checklistData",curlist);
+                                map.put("type",TYPE_CHECKLIST);
+                                map.put("FlightID",cm.getFlightID());
+                                DataConnector dataConnector = DataConnector.getInstance(getContext());
 
-                                Call<ResponseBody> mCall = restService.uploadChecklist(userid,
+                                try{
+                                    dataConnector.writeMap(map, getContext());
+                                    dataConnector.syncWithThread();
+                                    Toast.makeText(activity, "Checklist Submitted!", Toast.LENGTH_LONG).show();
+                                }catch (RuntimeException e){
+
+                                    Toast.makeText(activity, "Checklist Fail!", Toast.LENGTH_LONG).show();
+
+                                }
+
+
+
+
+
+                             /*   Call<ResponseBody> mCall = restService.uploadChecklist(userid,
                                         new ChecklistWrapper(localDate, dateFormat.format(curDate) + "Z", curlist, TYPE_CHECKLIST, templateName, cm.getFlightID().toString()));
-
-                                mCall.enqueue(new Callback<ResponseBody>() {
+*/
+                  /*              mCall.enqueue(new Callback<ResponseBody>() {
                                     @Override
                                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                                         Log.d("TAG", "UPLOAD_SUCCESS");
@@ -491,7 +522,7 @@ public class PreFlightFragment extends android.support.v4.app.Fragment {
                                         Toast.makeText(activity, "Submit Failed! Check Your Internet Connection.", Toast.LENGTH_LONG).show();
                                     }
                                 });
-                                dialog.dismiss();
+                                dialog.dismiss();*/
                             }
                         })
                      .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -575,6 +606,10 @@ public class PreFlightFragment extends android.support.v4.app.Fragment {
                 // Sync files from the cloud first
                 final List<String> idlist = new ArrayList<>();
 
+
+
+
+                //Syncing list of permission data to local storage, want to replace by DataConnector writeMap
                 syncFromCloud_sub = restService.getPermissonSlipMetaData(Configs.PERMISSONDBID)
                         .flatMap(new Func1<PermissonSlipMetaDataResponse, Observable<Void>>() {
                             @Override

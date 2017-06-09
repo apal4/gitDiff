@@ -91,5 +91,10 @@ public class Configs {
     public static final String PERMISSONDBID = "demo1";
     // Cloudant DB where all of other data is stored.
     public static final String DATADBID = "db0";
+    //used for testing the DataConnnector
+
+    private static String mDataStoreName = "my_datastore3";
+    private static String mDatabaseName = "test8";
+
 
 }

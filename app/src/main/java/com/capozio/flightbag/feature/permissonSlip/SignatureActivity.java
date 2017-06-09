@@ -29,6 +29,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TableLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.capozio.flightbag.App;
 import com.capozio.flightbag.R;
@@ -58,6 +59,8 @@ import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.TimeZone;
 import java.util.UUID;
 import java.util.concurrent.Callable;
@@ -75,6 +78,7 @@ import static com.capozio.flightbag.util.Configs.PDF_FILENAME;
 import static com.capozio.flightbag.util.Configs.TIME_FORMAT_LOCAL;
 import static com.capozio.flightbag.util.Configs.TYPE_PERMISSONWAIVER;
 import static com.capozio.flightbag.util.KeyBoardUtil.hideKeyBoard;
+import com.capozio.flightbag.rest.DataConnector;
 
 /*** ***********************************************************************
  * <p>
@@ -263,6 +267,7 @@ public class SignatureActivity extends AppCompatActivity{
                 else
                     // Just submit the PDF.
                     submitPDF();
+
                 // Currently does nothing.
                 // The idea is that we make sure the user can submit a checklist
                 // only after signing a waiver.
@@ -403,15 +408,21 @@ public class SignatureActivity extends AppCompatActivity{
      * Saves the metadata for a signed permission to a local file.
      * @return
      */
-    private PDFWrapper saveMetaData() {
+    private Map<String,Object> saveMetaData() {
         // get local time and UTC time
+        Map<String,Object> metamap=new HashMap<String,Object>();
         SimpleDateFormat dateFormat = new SimpleDateFormat(TIME_FORMAT_LOCAL);
         Date curDate = new Date();
         String localDate = dateFormat.format(curDate);
         dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
         String utcDate = dateFormat.format(curDate) + "Z";
+        metamap.put("LocalTimestamp",localDate);
+        metamap.put("UTCTimestamp",utcDate);
+        metamap.put("type","HOMEOWNER");
         String streetAddr = ((GeocoderAutoCompleteView) findViewById(R.id.edit_street_address)).getText().toString();
+        metamap.put("StreetAddress",streetAddr);
         final String resident = ((EditText) findViewById(R.id.edit_name)).getText().toString();
+        metamap.put("Resident",resident);
 
         double latitude = 0.0;
         double longitude = 0.0;
@@ -423,6 +434,9 @@ public class SignatureActivity extends AppCompatActivity{
             latitude = lastLocation.getLatitude();
             longitude = lastLocation.getLongitude();
         }
+        metamap.put("Latitude",latitude);
+        metamap.put("Longitude",longitude);
+
 
         //LocationServices.FusedLocationApi.removeLocationUpdates(googleApiClient, this);
         PDFWrapper metaData = new PDFWrapper(docID, TYPE_PERMISSONWAIVER, streetAddr,
@@ -430,9 +444,9 @@ public class SignatureActivity extends AppCompatActivity{
 
         File metaFile = new File(curDir.toString(), Configs.META_FILENAME);
 
-        StorageUtil.writeJson2File(metaFile, new Gson().toJson(metaData));
+        StorageUtil.writeJson2File(metaFile, new Gson().toJson(metamap));
 
-        return metaData;
+        return metamap;
     }
 
 
@@ -528,9 +542,18 @@ public class SignatureActivity extends AppCompatActivity{
         // Generate the PDF waiver using the content of
         // two Android views.
         final File pdfFile = generatePDF();
+        if(pdfFile==null){
+            Toast.makeText(this, "pdf not generate!", Toast.LENGTH_LONG).show();
+        }
+        //Christine using new dataconnector to upload pdf
+       final Map<String,Object> map=saveMetaData();
+
+
+
+
 
         // Get the associated meta data.
-        final PDFWrapper metaData = saveMetaData();
+     //   final PDFWrapper metaData = saveMetaData();
 
         // The email address of the homeowner.
         final String emailAddress = emailText.getText().toString().trim();
@@ -572,11 +595,26 @@ public class SignatureActivity extends AppCompatActivity{
 
                     // Upload the PDF to Cloudant.
                     @Override
-                    public void onNext(Boolean aBoolean) {
+                    public void onNext( Boolean aBoolean) {
+
                         Log.d(TAG, "onNext!" + aBoolean);
-                        RestService.RESTuploadPDF(metaData, pdfFile,
-                                docID, curDir, emailAddress, aBoolean, progressDialog,
-                                getApplicationContext(), false, aBoolean);
+                        //upload to cloud
+                        DataConnector dataConnector = DataConnector.getInstance(getApplicationContext());
+                        Boolean pdfupload=false;
+                        try {
+                            dataConnector.writeMapwithPDF(map, getApplicationContext(), "Signed Wavier", pdfFile);
+                            dataConnector.syncWithThread();
+                            pdfupload=true;
+                        }catch(RuntimeException e){
+
+                        }
+                        File statusFile = new File(curDir.toString(), Configs.STAT_FILENAME);
+                        //                        Log.d(TAG, "dir"+currentDir.getAbsolutePath());
+                        StorageUtil.writeStatus2File(statusFile, emailAddress,  aBoolean, pdfupload);
+                        Toast.makeText(getApplicationContext(), "pdf Submitted!", Toast.LENGTH_LONG).show();
+                   //     RestService.RESTuploadPDF(metaData, pdfFile,
+                         //       docID, curDir, emailAddress, aBoolean, progressDialog,
+                         //       getApplicationContext(), false, aBoolean);
                     }
                 });
 
