@@ -35,12 +35,15 @@ import com.cloudant.sync.documentstore.DocumentStore;
 import com.cloudant.sync.documentstore.DocumentStoreException;
 import com.cloudant.sync.documentstore.DocumentStoreNotOpenedException;
 import com.cloudant.sync.documentstore.UnsavedFileAttachment;
+import com.cloudant.sync.query.QueryException;
+import com.cloudant.sync.query.QueryResult;
 import com.cloudant.sync.replication.Replicator;
 import com.cloudant.sync.replication.ReplicatorBuilder;
 
 import java.io.File;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -49,6 +52,8 @@ import android.app.Application;
 import android.content.Context;
 
 import com.capozio.flightbag.util.GoogleApiHelper;
+
+import org.jose4j.json.internal.json_simple.JSONObject;
 
 /*
 import com.cloudant.sync.datastore.Datastore;
@@ -273,5 +278,25 @@ public class DataConnector {
             Log.i("sync() error ", ex.toString());
 
         }
+    }
+
+
+    /** reading data from cloudant using {@link com.cloudant.sync.documentstore.DocumentStore}
+     */
+    public static Map<String, Object> readFromCloudant (Context context,Map<String, Object> map){
+        init(context);
+        try {
+            QueryResult result=mDocumentStore.query().find(map);
+            ArrayList<String> id=new ArrayList<String>();
+            for(int i=0; i<id.size();i++) {
+                Log.d("D", id.get(i));
+            }
+
+        } catch (QueryException e) {
+            e.printStackTrace();
+        }
+
+
+        return new HashMap<String, Object>();
     }
 }

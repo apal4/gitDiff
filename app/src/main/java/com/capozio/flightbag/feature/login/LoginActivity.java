@@ -18,6 +18,7 @@ import android.widget.ProgressBar;
 import com.capozio.flightbag.R;
 import com.capozio.flightbag.data.model.PilotDataResponse;
 import com.capozio.flightbag.feature.main.MainActivity;
+import com.capozio.flightbag.rest.DataConnector;
 import com.capozio.flightbag.rest.RestClient;
 import com.capozio.flightbag.rest.RestInterface;
 import com.capozio.flightbag.util.ToastUtil;
@@ -27,6 +28,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -283,13 +287,19 @@ public class LoginActivity extends AppCompatActivity {
 
     private void goToMainActivity(String email) {
         // get pilot info
-        final RestInterface restService = RestClient.getInstance().create(RestInterface.class);
+       /* final RestInterface restService = RestClient.getInstance().create(RestInterface.class);
         JsonObject innerObject = new JsonObject();
         innerObject.addProperty("EmailAddress", email);
         innerObject.addProperty("type", "Pilot");
         JsonObject emailQuery = new JsonObject();
         emailQuery.add("selector", innerObject);
-
+*/
+        Map<String, Object> query=new HashMap<String, Object>();
+        query.put("EmailAddress",email);
+        query.put("type","Pilot");
+        DataConnector dataConnector = DataConnector.getInstance(getApplicationContext());
+        dataConnector.readFromCloudant(getApplicationContext(),query);
+      /*
         restService.getPilotInfo(DATADBID, emailQuery)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -314,6 +324,7 @@ public class LoginActivity extends AppCompatActivity {
                         finish();
                     }
                 });
+        */
 
     }
 }
