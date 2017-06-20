@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="arraypageradapter-0.1.1">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.android/build-cache/fc5b5b6338949c3d97b7a78dba27bf994cdc07b7/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/fc5b5b6338949c3d97b7a78dba27bf994cdc07b7/output/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.nakama.arraypageradapter/arraypageradapter/0.1.1/e3c72d45c555f0daed0e89d391c5cb0d8874fd62/arraypageradapter-0.1.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
